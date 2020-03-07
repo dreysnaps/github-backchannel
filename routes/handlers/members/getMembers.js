@@ -3,6 +3,7 @@ const { get } = require("lodash");
 
 const { octokit } = require("../../lib/octokit");
 const { HTTPError } = require("../../lib/HTTPError");
+const debug = require("debug")("xendit:members:getMembers");
 
 exports.getMembers = async function(req) {
   try {

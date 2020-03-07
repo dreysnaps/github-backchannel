@@ -1,9 +1,11 @@
 const express = require("express");
 const path = require("path");
 
+const debug = require("debug")("xendit:*");
+
 const PORT = process.env.PORT || 5000;
 
-var index = require("./routes/index");
+const index = require("./routes/index");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -17,6 +19,7 @@ app.use(
 
 app.use("/", index);
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-
+app.listen(PORT, () => {
+  debug(`---- Server started on port ${PORT}`);
+});
 module.exports = app;
