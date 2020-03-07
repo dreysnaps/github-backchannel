@@ -1,6 +1,6 @@
 const { get } = require("lodash");
-const { octokit } = require("lib/octokit");
-const { HTTPError } = require("lib/HTTPError");
+const { octokit } = require("../lib/octokit");
+const { HTTPError } = require("../lib/HTTPError");
 
 exports.validateOrg = async function(req, res, next) {
   const org = get(req, "params.org", null);

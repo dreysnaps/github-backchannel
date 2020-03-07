@@ -1,7 +1,7 @@
 const express = require("express");
-const { getMembers } = require("handlers/members/getMembers");
-const { getComments } = require("handlers/comments/getComments");
-const { validateOrg } = require("middleware/validateOrg");
+const { getMembers } = require("./handlers/members/getMembers");
+const { getComments } = require("./handlers/comments/getComments");
+const { validateOrg } = require("./middleware/validateOrg");
 const router = express.Router();
 
 const asyncMiddleware = fn => async (req, res, next) => {

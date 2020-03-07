@@ -1,9 +1,10 @@
-const { get } = require("lodash");
-const { octokit } = require("lib/octokit");
-const { HTTPError } = require("lib/HTTPError");
 const Promise = require("bluebird");
+const { get } = require("lodash");
 
-exports.getMembers = async function(req, res) {
+const { octokit } = require("../../lib/octokit");
+const { HTTPError } = require("../../lib/HTTPError");
+
+exports.getMembers = async function(req) {
   try {
     const listMembers = await octokit.orgs.listMembers({ org: req.params.org });
 

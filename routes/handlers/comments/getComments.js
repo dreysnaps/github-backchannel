@@ -1,7 +1,7 @@
-const { octokit } = require("lib/octokit");
-const { HTTPError } = require("lib/HTTPError");
+const { octokit } = require("../../lib/octokit");
+const { HTTPError } = require("../../lib/HTTPError");
 
-exports.getComments = async function(req, res) {
+exports.getComments = async function(req) {
   try {
     const org = await octokit.orgs.get({ org: req.params.org });
 
