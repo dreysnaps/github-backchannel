@@ -2,7 +2,7 @@ const Promise = require("bluebird");
 const { get } = require("lodash");
 
 const { octokit } = require("../../lib/octokit");
-const { HTTPError } = require("../../lib/HTTPError");
+const { HTTPException } = require("../../lib/HTTPException");
 const debug = require("debug")("xendit:members:getMembers");
 
 exports.getMembers = async function(req) {
@@ -39,6 +39,6 @@ exports.getMembers = async function(req) {
     };
   } catch (err) {
     debug(err);
-    throw HTTPError("Internal Server Error");
+    throw HTTPException();
   }
 };

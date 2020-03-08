@@ -15,7 +15,7 @@ const asyncMiddleware = fn => async (req, res, next) => {
   try {
     await fn(req, res, next);
   } catch (err) {
-    res.status(err.http_code || 400).json({ message: err.message });
+    res.status(err.http_code || 500).json({ message: err.message });
   }
 };
 

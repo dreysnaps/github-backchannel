@@ -1,4 +1,4 @@
-const { HTTPError } = require("../../lib/HTTPError");
+const { HTTPException } = require("../../lib/HTTPException");
 const { pool } = require("../../lib/postgres");
 const debug = require("debug")("xendit:comments:getComments");
 
@@ -20,6 +20,6 @@ exports.getComments = async function(req) {
     return { comments: await retrieveComments(req.params.org) };
   } catch (err) {
     debug(err);
-    throw HTTPError("Internal Server Error.", 500);
+    throw HTTPException();
   }
 };

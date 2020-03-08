@@ -1,7 +1,7 @@
 jest.mock("../../lib/octokit");
 
 const { validateOrg } = require("../validateOrg");
-const { HTTPError } = require("../../lib/HTTPError");
+const { HTTPException } = require("../../lib/HTTPException");
 
 describe("Check Invalid Org", () => {
   // Or using async/await.
@@ -9,7 +9,7 @@ describe("Check Invalid Org", () => {
     try {
       await validateOrg({ params: { org: "ahasdbanhsdkfhc" } }, null, () => {});
     } catch (e) {
-      expect(e).toEqual(HTTPError("Organization not found", 404));
+      expect(e).toEqual(HTTPException("Organization not found", 404));
     }
   });
 });
@@ -19,7 +19,7 @@ describe("Check Invalid Parameter", () => {
     try {
       await validateOrg({}, null, () => {});
     } catch (e) {
-      expect(e).toEqual(HTTPError("Bad Request", 400));
+      expect(e).toEqual(HTTPException("Bad Request", 400));
     }
   });
 });

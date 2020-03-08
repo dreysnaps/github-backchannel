@@ -1,9 +1,11 @@
+const config = require("./config.js");
+
 const express = require("express");
 const path = require("path");
 
 const debug = require("debug")("xendit:*");
 
-const PORT = process.env.PORT || 5000;
+const PORT = config.PORT;
 
 const index = require("./routes/index");
 const bodyParser = require("body-parser");

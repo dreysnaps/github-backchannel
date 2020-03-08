@@ -1,7 +1,8 @@
 const { Octokit } = require("@octokit/rest");
+const config = require("../../config");
 
 exports.octokit = new Octokit({
-  auth: "c68de710af27fd05b466bee3cab6a06edb6ec589",
-  userAgent: "dreysnaps-test v0.1.0",
+  auth: config.GITHUB_TOKEN,
+  userAgent: config.USER_AGENT,
   baseUrl: "https://api.github.com"
 });
