@@ -5,6 +5,11 @@ const { octokit } = require("../../lib/octokit");
 const { HTTPException } = require("../../lib/HTTPException");
 const debug = require("debug")("xendit:members:getMembers");
 
+/**
+ * Retrieves members of org, then retrieves the followers and following count, sorting it to the followers count before returning the result
+ *
+ * @param {*} req
+ */
 exports.getMembers = async function(req) {
   try {
     const listMembers = await octokit.orgs.listMembers({ org: req.params.org });

@@ -2,6 +2,11 @@ const { HTTPException } = require("../../lib/HTTPException");
 const { pool } = require("../../lib/postgres");
 const debug = require("debug")("xendit:comments:getComments");
 
+/**
+ * Using org name as the primary key, retrieves the related comments that haven't been deleted yet and orders it from newest to oldest.
+ *
+ * @param {*} orgName
+ */
 async function retrieveComments(orgName) {
   const client = await pool.connect();
   const query = await client.query({

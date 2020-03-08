@@ -3,6 +3,10 @@ const { pool } = require("../../lib/postgres");
 
 const debug = require("debug")("xendit:comments:deleteComments");
 
+/**
+ * Soft deletes comments of a given org by adding a deleted_at date to any comment under the org that is null.
+ * @param {*} orgName
+ */
 async function deleteComments(orgName) {
   const client = await pool.connect();
   await client.query({

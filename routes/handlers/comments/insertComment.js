@@ -4,6 +4,12 @@ const { pool } = require("../../lib/postgres");
 
 const debug = require("debug")("xendit:comment:insertComment");
 
+/**
+ * Inserts a new comment under the org, returns the row id for it.
+ *
+ * @param {*} orgName
+ * @param {*} comment
+ */
 async function insertComment(orgName, comment) {
   const client = await pool.connect();
   const result = await client.query({
