@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check Valid Org Check members of org which exist (github) 1`] = `
+Object {
+  "members": Array [
+    Object {
+      "avatar_url": "https://avatars0.githubusercontent.com/u/50083?v=4",
+      "followers": 395,
+      "following": 1,
+      "login": "abinoda",
+    },
+    Object {
+      "avatar_url": "https://avatars3.githubusercontent.com/u/11968290?v=4",
+      "followers": 13,
+      "following": 0,
+      "login": "abhishekhegde",
+    },
+  ],
+}
+`;

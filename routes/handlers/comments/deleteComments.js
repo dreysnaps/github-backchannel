@@ -1,6 +1,8 @@
 const { HTTPError } = require("../../lib/HTTPError");
 const { pool } = require("../../lib/postgres");
 
+const debug = require("debug")("xendit:comments:deleteComments");
+
 async function deleteComments(orgName) {
   const client = await pool.connect();
   await client.query({
@@ -20,7 +22,7 @@ exports.deleteComments = async function(req) {
       message: `Successfully deleted comments for  ${orgName}.`
     };
   } catch (err) {
-    console.log(err.status);
+    debug(err);
     throw HTTPError("Internal Server Error.", 500);
   }
 };

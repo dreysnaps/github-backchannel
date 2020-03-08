@@ -1,1 +1,1 @@
-jest.mock('routes/lib/postgres');
+jest.mock("routes/lib/octokit");

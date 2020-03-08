@@ -2,6 +2,8 @@ const { get } = require("lodash");
 const { HTTPError } = require("../../lib/HTTPError");
 const { pool } = require("../../lib/postgres");
 
+const debug = require("debug")("xendit:comment:insertComment");
+
 async function insertComment(orgName, comment) {
   const client = await pool.connect();
   const result = await client.query({
@@ -30,7 +32,7 @@ exports.insertComment = async function(req) {
       ...result
     };
   } catch (err) {
-    console.log(err);
+    debug(err);
     throw HTTPError("Internal Server Error.", 500);
   }
 };

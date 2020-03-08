@@ -8,7 +8,6 @@ const debug = require("debug")("xendit:members:getMembers");
 exports.getMembers = async function(req) {
   try {
     const listMembers = await octokit.orgs.listMembers({ org: req.params.org });
-
     const members = await Promise.map(listMembers.data, async member => {
       try {
         const user = get(
@@ -18,6 +17,7 @@ exports.getMembers = async function(req) {
           "data",
           member
         );
+
         return {
           login: user.login,
           avatar_url: user.avatar_url,
@@ -25,7 +25,7 @@ exports.getMembers = async function(req) {
           following: user.following
         };
       } catch (err) {
-        console.log(err);
+        debug(err);
         return member;
       }
     });
@@ -38,7 +38,7 @@ exports.getMembers = async function(req) {
       members: members
     };
   } catch (err) {
-    console.log(err);
+    debug(err);
     throw HTTPError("Internal Server Error");
   }
 };
